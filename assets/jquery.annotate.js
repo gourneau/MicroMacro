@@ -54,6 +54,7 @@
 		
 			var left = this.x;
 			var top = this.y;
+			element.data("thumb",this.url);
 		
 			element.css({ left: left + 'px', top: top + 'px'});
 		});

@@ -14,27 +14,33 @@
             $(function(){
                 
                 $('#macro').addAnnotations(function(annotation){
-                  return $(document.createElement('span')).
-                    addClass('black circle note');
+                  return $(document.createElement('span')).addClass('black circle note');
                 },[
-                    {x: 100, y: 100, title: ""}, 
-                    {x: 200, y: 40, title: ""}
+                    {x: 100, y: 100, url : "url.jpg"}, 
+                    {x: 400, y: 400, url : "url.jpg"}, 
+                    {x: 200, y: 40, url: "url.jpg"}
                   ]
                 );                
             
-                $(".note").qtip({
-                    content: {
-                        text: '<img src="http://farm6.static.flickr.com/5042/5228309359_3fedf9f026_m.jpg"/>',
-                    },
-                    position: {
-                        viewport: $(window)
-                    },
-                    hide: {
-                        fixed: true
-                    },
-                    style: {
-                        classes: 'ui-tooltip-tipsy ui-tooltip-flickr'
-                    }
+                $(".note").each(function(index){
+                    
+                    thumbURL = $(this).data("thumb");
+                    
+                    $(this).qtip({
+                        content: {
+                            text: thumbURL
+                        },
+                        position: {
+                            viewport: $(window)
+                        },
+                        hide: {
+                            fixed: true
+                        },
+                        style: {
+                            classes: 'ui-tooltip-tipsy ui-tooltip-flickr'
+                        }
+                    });
+                    
                 });
                 
             });
