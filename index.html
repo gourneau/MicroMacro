@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MicroMacro</title>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+            <script src="jquery.annotate.js"></script>
+            <script src="assets/jquery.qtip.js"></script>
+            
+            <link href="assets/jquery.qtip.css" rel="stylesheet">
+            <link href="assets/css/bootstrap.css" rel="stylesheet">
+            
+        
+        <script>
+                    
+                
+            $(function(){
+                
+                $('#macro').addAnnotations(function(annotation){
+                  return $(document.createElement('span')).
+                    addClass('black circle note');
+                },[
+                    {x: 100, y: 100, title: ""}, 
+                    {x: 200, y: 40, title: ""}
+                  ]
+                );                
+            
+                $(".note").qtip({
+                    content: {
+                        text: '<img src="http://farm6.static.flickr.com/5042/5228309359_3fedf9f026_m.jpg"/>',
+                    },
+                    position: {
+                        viewport: $(window)
+                    },
+                    hide: {
+                        fixed: true
+                    },
+                    style: {
+                        classes: 'ui-tooltip-tipsy ui-tooltip-flickr'
+                    }
+                });
+                
+            });
+            
+        </script>
+        
+        <style>
+            span.note {
+                display: block; position: absolute; top: -2px; left: 0; 
+                background: url(notes-bg.png) no-repeat 0 0; width: 25px; height: 25px; font-size: 12px;
+                font-weight: bold; line-height: 25px; letter-spacing: -1px; text-align: center; color: #fff;
+                text-decoration: none; text-shadow: 0 1px 1px rgba(0,0,0,.15);
+            }
+            span.note.black { background-position: -150px 0; }
+            span.wrap { padding: 10px; }
+            /* Set a slightly bigger max-width so we can fit in our photos */
+            .ui-tooltip-flickr{
+                max-width: 700px;
+            }
+        
+            /* Adds the flickr favicon to the top right of the tooltip :) */
+            .ui-tooltip-flickr .ui-tooltip-titlebar{
+                background-repeat: no-repeat;
+                background-position: 97% 7px;
+            }
+        
+            .ui-tooltip-flickr .ui-tooltip-title{
+                padding-right: 0;
+            }
+        
+            .ui-tooltip-flickr img{
+                margin: 0 auto;
+            }        
+        
+        </style>
+    </head>
+    
+    <body>
+        <div id="macro">
+            <img src="http://winter.local/output/Home/elmo_121/readLenHisto.png">
+        </div>
+        
+    </body>
+
+</html>
